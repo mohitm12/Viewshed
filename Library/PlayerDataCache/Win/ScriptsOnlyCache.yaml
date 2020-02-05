@@ -66,9 +66,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10598}
     - Class: 114
-      Script: {instanceID: 11050}
+      Script: {instanceID: 11052}
     - Class: 114
-      Script: {instanceID: 11392}
+      Script: {instanceID: 11394}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -149,23 +149,23 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10598}
     - Class: 114
-      Script: {instanceID: 10600}
+      Script: {instanceID: 10602}
     - Class: 114
-      Script: {instanceID: 10610}
+      Script: {instanceID: 10612}
     - Class: 114
-      Script: {instanceID: 10644}
+      Script: {instanceID: 10646}
     - Class: 114
-      Script: {instanceID: 10786}
+      Script: {instanceID: 10788}
     - Class: 114
-      Script: {instanceID: 10856}
+      Script: {instanceID: 10858}
     - Class: 114
-      Script: {instanceID: 10942}
+      Script: {instanceID: 10944}
     - Class: 114
-      Script: {instanceID: 11050}
+      Script: {instanceID: 11052}
     - Class: 114
-      Script: {instanceID: 11392}
+      Script: {instanceID: 11394}
     - Class: 114
-      Script: {instanceID: 11440}
+      Script: {instanceID: 11442}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -487,6 +487,12 @@ ScriptsOnlyBuild:
     className: Button
   - hash:
       serializedVersion: 2
+      Hash: dd9dab6ffeab2447059886042ba5bdff
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ToggleDestroyer
+  - hash:
+      serializedVersion: 2
       Hash: 9993429ccd80ab97bc95e8fedbb03202
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -707,12 +713,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: dd9dab6ffeab2447059886042ba5bdff
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: ToggleDestroyer
   platform: 5
   scenePathNames:
   - Assets/Scenes/MenuScene.unity
