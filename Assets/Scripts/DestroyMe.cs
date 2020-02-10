@@ -6,7 +6,7 @@ public class DestroyMe : MonoBehaviour
 {   
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.tag == "Tower")
+        if (col.gameObject.tag == "Tower" || col.gameObject.tag == "Target")
         {
             Destroy(col.gameObject);
         }
