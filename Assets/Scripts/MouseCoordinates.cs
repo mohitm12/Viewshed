@@ -21,7 +21,11 @@ public class MouseCoordinates : MonoBehaviour
         if(Physics.Raycast(ray, out hitInfo, Mathf.Infinity, (1<<LayerMask.NameToLayer("Ground"))))
         {
             //transform.position = new Vector3(hitInfo.point.x,hitInfo.point.y,hitInfo.point.z);
-            etext.text = hitInfo.point.ToString();
+            Vector3 point = hitInfo.point;
+            point.x += 512;
+            point.y += 100;
+            point.z += 512;
+            etext.text = point.x.ToString() + ", " + point.z.ToString();
         }
     }
 }

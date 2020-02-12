@@ -18,7 +18,7 @@ public class Explorer : MonoBehaviour
     void OnEnable()
     {
         openExplorerButton.onClick.AddListener(delegate{ShowExplorer();});
-        Debug.Log("Explorer opened");
+
     }
 
     void Start()

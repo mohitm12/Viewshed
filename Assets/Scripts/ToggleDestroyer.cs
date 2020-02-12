@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Threading;
 
-public class Toggle : MonoBehaviour
+public class ToggleDestroyer : MonoBehaviour
 {
 	
 	public GameObject spawnee;
