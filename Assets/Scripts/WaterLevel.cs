@@ -1,67 +1,54 @@
-﻿// using System.Collections;
-// using System.Collections.Generic;
-// using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 
-// public class WaterLevel : MonoBehaviour
-// {
-//     public float climbSpeed = 4;
-//     public Plane waterPlane;
-//     private Vector3 waterSize;
-//     public InputField inputLevel;
-//     private bool changeh = false;
+public class WaterLevel : MonoBehaviour
+{
+    public float climbSpeed = 4;
+    public InputField inputHeight;
+    private bool changeh = false;
+    // Start is called before the first frame update
+    void Start()
+    {
 
-//     // Start is called before the first frame update
-//     void Start()
-//     {
-//         waterSize = waterPlane.size;
-//     }
+    }
 
-//     // Update is called once per frame
-//     void Update()
-//     {
-//         if (Input.GetKey (KeyCode.KeypadPlus)) {transform.position += transform.up * climbSpeed * Time.deltaTime;}
-// 		if (Input.GetKey (KeyCode.KeypadMinus)) {transform.position -= transform.up * climbSpeed * Time.deltaTime;}
-//     }
+    // Update is called once per frame
+    void Update()
+    {
 
-//     public void changeWaterLevel()
-//     {
+         if(changeh)
+         {
+             float h;
+             if(inputHeight.text.Length == 0)
+             {
+                 h = 5f;
+             }
+             else
+             {
+                h = float.Parse(inputHeight.text);
+             }
+                transform.position = new Vector3(0f, h - 100f , 0f); 
+            changeh = false;
+         }
+        else if (Input.GetKey (KeyCode.KeypadPlus))
+         {
+            transform.position += transform.up * climbSpeed * Time.deltaTime;
+            inputHeight.text = (transform.position.y + 100f).ToString();
 
-//     }
-// }
+        }
+		else if (Input.GetKey (KeyCode.KeypadMinus)) {
+            transform.position -= transform.up * climbSpeed * Time.deltaTime;
+           inputHeight.text = (transform.position.y + 100f).ToString();
 
-// public Terrain terrain;
-//     private Vector3 terrainSize;
-//     public InputField inputHeight;  
-    
-//     private bool changeh = false;
-
-//     // Start is called before the first frame update
-//     void Start()
-//     {
-//         terrainSize = terrain.terrainData.size;
-//     }
-
-//     // // Update is called once per frame
-//      void Update()
-//      {
-//          if(changeh)
-//          {
-//              float h;
-//              if(inputHeight.text.Length == 0)
-//              {
-//                  h = 200f;
-//              }
-//              else
-//              {
-//                 h = float.Parse(inputHeight.text);
-//              }
-//             terrain.terrainData.size = new Vector3(terrainSize.x , h , terrainSize.z);
-//             changeh = false;
-//          }
+        }
          
-//     }
+         
+    }
 
-//     public void ChangeHeight()
-//     {
-//         changeh = true;
-//     }
+    public void changeWaterLevel()
+    {
+        changeh = true;
+    }
+}
