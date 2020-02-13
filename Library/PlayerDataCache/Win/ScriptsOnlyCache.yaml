@@ -38,6 +38,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Image
     - UnityEngine.UI.InputField
     - UnityEngine.UI.Mask
+    - UnityEngine.UI.RawImage
     - UnityEngine.UI.ScrollRect
     - UnityEngine.UI.Scrollbar
     - UnityEngine.UI.Text
@@ -77,6 +78,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 10604}
     - Class: 114
       Script: {instanceID: 10618}
+    - Class: 114
+      Script: {instanceID: 10644}
     - Class: 114
       Script: {instanceID: 10724}
     - Class: 114
@@ -873,4 +876,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Menu.unity
   - Assets/Scenes/Viewshed.unity
   - Assets/Scenes/Watershed.unity
-  playerPath: F:/BISAG/Unity/Viewshed/V&W.exe
+  playerPath: F:/BISAG/Unity/Project Build/V&W.exe
