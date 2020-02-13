@@ -7,7 +7,7 @@ using SmartDLL;
 
 public class Explorer : MonoBehaviour
 {
-    public Text eText;
+    
     public Button openExplorerButton;
     public Terrain TerrainMain;
 
@@ -30,7 +30,7 @@ public class Explorer : MonoBehaviour
     {
         if(fileExplorer.resultOK && readText)
         {
-            ReadText(fileExplorer.fileName);
+            LoadTerrain(fileExplorer.fileName);
             Debug.Log("update");
             readText = false;
         }
@@ -50,7 +50,7 @@ public class Explorer : MonoBehaviour
         readText = true;    
     }
 
-    void ReadText(string aFileName)
+    void LoadTerrain(string aFileName)
     {
         int xRes = TerrainMain.terrainData.heightmapWidth;
         int yRes = TerrainMain.terrainData.heightmapHeight;
