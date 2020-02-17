@@ -8,8 +8,6 @@ public class DestroyMe : MonoBehaviour
     {
         if (col.gameObject.tag == "Tower" || col.gameObject.tag == "Target")
         {
-            // var exp = col.gameObject.GetComponent<ParticleSystem>();
-            // exp.Play();
             Destroy(col.gameObject);
         }
     }
