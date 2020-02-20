@@ -23,8 +23,8 @@ public class GetCoordinates : MonoBehaviour
             Vector3 point = tower.transform.position;
             point.x += 512;
             point.z += 512;
-            ctext.text +="[ "+ point.x.ToString() + " , " + point.z.ToString() + " ]";
-            ctext.text += "\n";
+            ctext.text +="->>  [ "+ point.x.ToString() + " , " + point.z.ToString() + " ]";
+            ctext.text += "\n\n";
         }     
             
     }

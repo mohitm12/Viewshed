@@ -11,9 +11,9 @@ public class Toggle : MonoBehaviour
 	
     void Start()
     {
-        ToggleRemover(PlayerPrefs.GetInt("Counter"));
+        ToggleLOS(PlayerPrefs.GetInt("Counter"));
     }
-	public void remover()
+	public void toggleLos()
     {
 	 	changeCounter();
     }
@@ -21,10 +21,10 @@ public class Toggle : MonoBehaviour
 	{
 		int counter = PlayerPrefs.GetInt("Counter");
 		counter++;
-		ToggleRemover(counter);
+		ToggleLOS(counter);
 	}
 
-	void ToggleRemover(int counter)
+	void ToggleLOS(int counter)
 	{
 		//GameObject losOrigin;
 		//losOrigin = GameObject.Find("Origin");
