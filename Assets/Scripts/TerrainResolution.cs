@@ -26,15 +26,27 @@ public class TerrainResolution : MonoBehaviour
              float h;
              if(inputHeight.text.Length == 0)
              {
-                 h = 200f;
+                 h = 100f;
              }
              else
              {
                 h = float.Parse(inputHeight.text);
              }
+
+            //  GameObject[] towers;
+            // towers = GameObject.FindGameObjectsWithTag("Tower");
+            // foreach(GameObject tower in towers)
+            // {
+            //     Vector3 point = tower.transform.position;
+            //     tower.transform.position = new Vector3(point.x, , point.z);
+            // }
             terrain.terrainData.size = new Vector3(terrainSize.x , h , terrainSize.z);
+            
+         
+         
             changeh = false;
-         }
+         
+         }  
          
     }
 

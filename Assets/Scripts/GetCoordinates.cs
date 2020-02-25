@@ -18,12 +18,14 @@ public class GetCoordinates : MonoBehaviour
         GameObject[] towers;
         towers = GameObject.FindGameObjectsWithTag("Tower");
         ctext.text = "";
+        int i = 0;
         foreach(GameObject tower in towers)
         {
             Vector3 point = tower.transform.position;
-            point.x += 512;
-            point.z += 512;
-            ctext.text +="->>  [ "+ point.x.ToString() + " , " + point.z.ToString() + " ]";
+          //  point.x += 512;
+         //   point.z += 512;
+            i++;
+            ctext.text +="Tower " + i + " : [ "+ point.x.ToString() + " , " + point.z.ToString() + " ]";
             ctext.text += "\n\n";
         }     
             

@@ -1,16 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ToggleSettings : MonoBehaviour
 {
-     public GameObject settings;
-	//int counter;
+    public GameObject settings;
+	public Button button;
     private bool show;
     void Start()
     {
         settings.SetActive(false);
-        // counter = 0;
         show = false;
     }
 	public void toggleSettings()
@@ -19,14 +19,18 @@ public class ToggleSettings : MonoBehaviour
         if(show)
         {
             settings.SetActive(false);  
+            button.GetComponent<Image>().color = new Color(0.3686f,0.3411f,0.3254f,1.0f);
+            button.GetComponentInChildren<Text>().color = Color.white;
             show = false;
         }
         else
         {
             settings.SetActive(true);
+            button.GetComponent<Image>().color = new Color(0.8f,0.8f,0.8f,1.0f);
+            button.GetComponentInChildren<Text>().color = Color.black;
+            
+            //button.GetComponent<Image>().color = new Color(0.0293f,0.566f,0.0786f,1.0f);
             show = true;
         }        
-
-	 	//changeCounter();
     }
 }

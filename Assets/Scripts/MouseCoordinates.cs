@@ -22,10 +22,10 @@ public class MouseCoordinates : MonoBehaviour
         {
             //transform.position = new Vector3(hitInfo.point.x,hitInfo.point.y,hitInfo.point.z);
             Vector3 point = hitInfo.point;
-            point.x += 512;
-            point.y += 100;
-            point.z += 512;
-            etext.text = point.x.ToString() + ", " + point.z.ToString();
+           // point.x += 512;
+           // point.y += 100;
+           // point.z += 512;
+            etext.text ="Cursor : " + point.x.ToString() + ", " + point.z.ToString();
         }
     }
 }

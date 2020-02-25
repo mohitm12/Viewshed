@@ -6,56 +6,44 @@ using UnityEngine.UI;
 public class ToggleButtons : MonoBehaviour
 {
     public GameObject buttons;
-	//int counter;
+    public Button button;
     private bool show;
+
     void Start()
     {
         buttons.SetActive(false);
-        // counter = 0;
-        show = false;
+         show = false;
     }
 	public void toggleButtons()
     {
 
+        // if(show)
+        // {
+        //     buttons.SetActive(false);  
+        //     show = false;
+        // }
+        // else
+        // {
+        //     buttons.SetActive(true);
+        //     show = true;
+        // } 
         if(show)
         {
             buttons.SetActive(false);  
+            button.GetComponent<Image>().color = new Color(0.3686f,0.3411f,0.3254f,1.0f);
+            button.GetComponentInChildren<Text>().color = Color.white;
             show = false;
         }
         else
         {
             buttons.SetActive(true);
+            button.GetComponent<Image>().color = new Color(0.8f,0.8f,0.8f,1.0f);
+            button.GetComponentInChildren<Text>().color = Color.black;
+            
+            //button.GetComponent<Image>().color = new Color(0.0293f,0.566f,0.0786f,1.0f);
             show = true;
-        }        
+        }               
 
-	 	//changeCounter();
     }
-	// void changeCounter()
-	// {
-	// 	counter++;
-	// 	ToggleButtons(counter);
-	// }
-
-	// void ToggleButtons(int counter)
-	// {
-	// 	//GameObject losOrigin;
-	// 	//losOrigin = GameObject.Find("Origin");
-		
-	// 	if(counter > 1)
-	// 	{
-	// 		counter=0;
-	// 	}
-		
-	// 	if(counter == 1)
-	// 	{
-	// 		buttons.SetActive(true);
-	// 	}
-		
-	// 	if(counter == 0)
-	// 	{
-    //         buttons.SetActive(false);
-    //     }	
-
-    //     Debug.Log(counter);
-	// }
+	
 }

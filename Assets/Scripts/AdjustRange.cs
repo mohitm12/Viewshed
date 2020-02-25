@@ -26,7 +26,7 @@ public class AdjustRange : MonoBehaviour
 
             if(inputRange.text.Length == 0)
             {
-                range = 200;
+                range = 300;
             }
             else
             {
