@@ -1,11 +1,13 @@
 ﻿﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CameraSwitch : MonoBehaviour
 {
     public GameObject cameraOne;
 	public GameObject cameraTwo;
+	public Text btext;
 	
     // Start is called before the first frame update
      void Start()
@@ -40,12 +42,14 @@ public class CameraSwitch : MonoBehaviour
 		{
 			cameraOne.SetActive(true);
 			cameraTwo.SetActive(false);
+			btext.text = "Top View";
 		}
 		
 		if(camPosition == 1)
 		{
 			cameraOne.SetActive(false);
 			cameraTwo.SetActive(true);
+			btext.text = "Free Camera";
 		}
 	}
 	

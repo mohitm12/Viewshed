@@ -29,18 +29,18 @@ public class WaterLevel : MonoBehaviour
              {
                 h = float.Parse(inputHeight.text);
              }
-                transform.position = new Vector3(0f, h - 100f , 0f); 
+                transform.position = new Vector3(512.5f, h, 512.5f); 
             changeh = false;
          }
         else if (Input.GetKey (KeyCode.KeypadPlus))
          {
             transform.position += transform.up * climbSpeed * Time.deltaTime;
-            inputHeight.text = (transform.position.y + 100f).ToString();
+            inputHeight.text = (transform.position.y).ToString();
 
         }
 		else if (Input.GetKey (KeyCode.KeypadMinus)) {
             transform.position -= transform.up * climbSpeed * Time.deltaTime;
-           inputHeight.text = (transform.position.y + 100f).ToString();
+           inputHeight.text = (transform.position.y ).ToString();
 
         }
          

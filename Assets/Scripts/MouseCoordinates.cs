@@ -25,7 +25,7 @@ public class MouseCoordinates : MonoBehaviour
            // point.x += 512;
            // point.y += 100;
            // point.z += 512;
-            etext.text ="Cursor : " + point.x.ToString() + ", " + point.z.ToString();
+            etext.text = point.x.ToString() + ", " + point.z.ToString();
         }
     }
 }

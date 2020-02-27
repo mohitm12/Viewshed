@@ -10,6 +10,7 @@ public class TerrainResolution : MonoBehaviour
     private Vector3 terrainSize;
     public InputField inputHeight;  
     
+    
     private bool changeh = false;
 
     // Start is called before the first frame update
@@ -26,7 +27,7 @@ public class TerrainResolution : MonoBehaviour
              float h;
              if(inputHeight.text.Length == 0)
              {
-                 h = 100f;
+                 h = 150f;
              }
              else
              {
