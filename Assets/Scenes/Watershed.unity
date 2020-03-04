@@ -460,9 +460,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panSpeed: 100
   panBorderThickness: 10
-  panLimit: {x: 600, y: 800}
+  panLimit: {x: 1000, y: 1000}
   minY: 50
-  maxY: 500
+  maxY: 800
   rotX: 0
   rotY: 0
   localRotation: {x: 0, y: 0, z: 0, w: 0}
@@ -1007,7 +1007,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100
+  m_Text: 150
 --- !u!222 &517806865
 CanvasRenderer:
   m_ObjectHideFlags: 0

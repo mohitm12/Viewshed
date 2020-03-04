@@ -24,6 +24,15 @@ public class Fog : MonoBehaviour
 
     public void fogProp()
     {
-       RenderSettings.fogDensity = (slider.value)/200;
+
+        RenderSettings.fogDensity = (slider.value)/200;
+        Light[] lights = FindObjectsOfType(typeof(Light)) as Light[];
+        foreach(Light light in lights)
+        {
+            if (light.tag == "Light")
+            {
+                light.intensity = 105 - (slider.value * 100);            
+            }
+        }
     }
 }

@@ -8,6 +8,8 @@ TagManager:
   - Target
   - Undefined
   - Tower
+  - SingleRange
+  - Terrain
   layers:
   - Default
   - TransparentFX

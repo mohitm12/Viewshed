@@ -39,6 +39,16 @@ public class ExtendedFlycam : MonoBehaviour
                 Thread.Sleep(300);
             }
         }
+		if(Input.GetKey(KeyCode.Escape))
+        {
+            if(rot == true)
+            {
+                rot = false;
+                Screen.lockCursor = false;
+                Thread.Sleep(300);
+			}
+        }
+
 
         if(rot)
         {
