@@ -6,8 +6,9 @@ public class ThrowSimulation : MonoBehaviour
     public Transform Target;
     public float firingAngle = 45.0f;
     public float gravity = 9.8f;
- 
-    public Transform Projectile;      
+    public LineRenderer lineRenderer;
+    public Transform Projectile; 
+    public GameObject source;     
     private Transform myTransform;
    
     void Awake()
@@ -22,6 +23,7 @@ public class ThrowSimulation : MonoBehaviour
  
     public void startProjectile()
     {
+        
         StartCoroutine(SimulateProjectile());
         
     }
@@ -47,20 +49,27 @@ public class ThrowSimulation : MonoBehaviour
  
         // Calculate flight time.
         float flightDuration = target_Distance / Vx;
-   
-        // Rotate projectile to face the target.
+        Debug.Log(flightDuration);
+            // Rotate projectile to face the target.
         Projectile.rotation = Quaternion.LookRotation(Target.position - Projectile.position);
-       
+       source.SetActive(false);
         float elapse_time = 0;
- Projectile.gameObject.SetActive(true);
+        //int i = int.Parse(flightDuration) * 20;
+        //int i;
+        //Projectile.gameObject.SetActive(true);
         while (elapse_time < flightDuration)
         {
+            //i = 0 ;
             Projectile.Translate(0, (Vy - (gravity * elapse_time)) * Time.deltaTime, Vx * Time.deltaTime);
-           
+           // lineRenderer.SetPosition(i, new Vector3(Vx * Time.deltaTime,(Vy - (gravity * elapse_time)) * Time.deltaTime,0f));
             elapse_time += Time.deltaTime;
- 
+            //lineRenderer.SetPosition(, Projectile.position);
             yield return null;
+        //    i++;
         }
-        Projectile.gameObject.SetActive(false);
+        //Projectile.gameObject.SetActive(false);
+                source.SetActive(true);
+                Projectile.position = source.transform.position;
+
     }  
 }

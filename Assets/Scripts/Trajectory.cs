@@ -9,7 +9,7 @@ public class Trajectory : MonoBehaviour
     [Space]
     [SerializeField] float launchMagnitude = 1f;
     [SerializeField] float launchAngle = 45f;
-    [SerializeField] bool preferSmallAng = false;
+    //[SerializeField] bool preferSmallAng = false;
     [SerializeField] Vector3 velocity = Vector3.right;
     [SerializeField] Vector3 acceleration = Vector3.down;
     [SerializeField] Vector3 unityAccuracyFix = Vector3.zero;
@@ -42,7 +42,7 @@ public class Trajectory : MonoBehaviour
         return res;
     }
 
-    public float Angle_ToReachXY_InGravity_AtMagnitude(float x, float y, float g, float mag) 
+    /*public float Angle_ToReachXY_InGravity_AtMagnitude(float x, float y, float g, float mag) 
     {
         float innerSq = Mathf.Pow(mag, 4) - g * (g * x * x + 2 * y * mag * mag);
         if(innerSq < 0)
@@ -62,6 +62,7 @@ public class Trajectory : MonoBehaviour
         float res = Mathf.Atan(innerATan) * Mathf.Rad2Deg;
         return res;
     }
+     */
 
     public void Calculate_Trajectory()
     {
@@ -87,21 +88,29 @@ public class Trajectory : MonoBehaviour
 
     public void Calculate_Velocity()
     {
-        Vector3 d = targetPos - transform.position;
+        Vector3 d = targetPos - source.position;
         velocity.x = Speed_ForDistance_DueToAcc_InTime(d.x, acceleration.x, time);
         velocity.y = Speed_ForDistance_DueToAcc_InTime(d.y, acceleration.y, time);
         velocity.z = Speed_ForDistance_DueToAcc_InTime(d.z, acceleration.z, time);
     }
 
+    IEnumerator LateCall()
+    {
+        yield return new WaitForSeconds(time);
+        projectile.SetActive(false);
+    }
+
     [Header("Ref")]
     [SerializeField] LineRenderer lineRendere = null;
-    [SerializeField] Rigidbody projectile;
+    [SerializeField] GameObject projectile;
     [SerializeField] Transform target;
+    [SerializeField] Transform source;
+    //[SerializeField] Transform sourcePos;
 
     [Header("Editor Settings")]
     [SerializeField] bool calc_Trajectory = false;
     [SerializeField] bool calc_Velocity = false;
-    [SerializeField] bool calc_SuitableMagAng = false;
+    //[SerializeField] bool calc_SuitableMagAng = false;
     [SerializeField] bool auto_calc = false;
 
     [Space]
@@ -109,8 +118,9 @@ public class Trajectory : MonoBehaviour
     float magChange = 0, angChange = 0;
     Vector3 velChange = Vector3.zero;
 
-    private void OnDrawGizmosSelected() 
+    void OnDrawGizmosSelected() 
     {
+        /*
         if(magChange != launchMagnitude)
         {
             if(calc_SuitableMagAng)
@@ -175,11 +185,12 @@ public class Trajectory : MonoBehaviour
             launchMagnitude = velocity.magnitude;
             launchAngle = Vector3.SignedAngle(Vector3.right, velocity, Vector3.forward);
         }
-
+        */
         if(calc_Trajectory)
         {
             if(!auto_calc)
                 calc_Trajectory = false;
+            
             Calculate_Trajectory();
             lineRendere.positionCount = splits;
             lineRendere.SetPositions(pathVertList.ToArray());
@@ -189,15 +200,25 @@ public class Trajectory : MonoBehaviour
         {
             if(!auto_calc)
                 calc_Velocity = false;
+
             targetPos = target.transform.position;
             Calculate_Velocity();
+            launchAngle = Mathf.Asin(Vector3.Dot(velocity, new Vector3(0,1,0)) / (velocity.magnitude)) * Mathf.Rad2Deg;
+            //launchAngle = Vector3.SignedAngle(Vector3.right, velocity, Vector3.down);
+            launchMagnitude = velocity.magnitude;
         }
 
         if(fire)
         {
             fire = false;
-            projectile.transform.position = transform.position;
-            projectile.velocity = velocity + unityAccuracyFix;
+            projectile.SetActive(true);
+            projectile.transform.position = source.position;
+            Rigidbody rb = projectile.GetComponent<Rigidbody>();
+            rb.velocity = velocity + unityAccuracyFix;
+            
+            //yield return new WaitForSeconds(time);
+            //projectile.SetActive(false);
+            StartCoroutine(LateCall());
         }
     }
 

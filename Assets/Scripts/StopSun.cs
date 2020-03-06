@@ -11,9 +11,9 @@ public class StopSun : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        use = true;
-        light.GetComponent<SunMovement>().enabled = true;
-        text.text = "Stop Sun";
+        use = false;
+        light.GetComponent<SunMovement>().enabled = false;
+        text.text = "Start Sun";
     }
 
     // Update is called once per frame
