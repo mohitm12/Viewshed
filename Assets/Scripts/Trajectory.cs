@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Trajectory : MonoBehaviour
 {
+/* 
     [SerializeField] List<Vector3> pathVertList = new List<Vector3>();
     [SerializeField] float time = 1;
     [Space]
@@ -13,7 +14,7 @@ public class Trajectory : MonoBehaviour
     [SerializeField] Vector3 velocity = Vector3.right;
     [SerializeField] Vector3 acceleration = Vector3.down;
     [SerializeField] Vector3 unityAccuracyFix = Vector3.zero;
-    [SerializeField] int splits = 3;
+    [SerializeField] int splits = 20;
     [Space]
     [SerializeField] Vector3 targetPos = Vector3.one;
 
@@ -41,28 +42,6 @@ public class Trajectory : MonoBehaviour
         res = Mathf.Sqrt(inner);
         return res;
     }
-
-    /*public float Angle_ToReachXY_InGravity_AtMagnitude(float x, float y, float g, float mag) 
-    {
-        float innerSq = Mathf.Pow(mag, 4) - g * (g * x * x + 2 * y * mag * mag);
-        if(innerSq < 0)
-        {
-            return float.NaN;
-        }
-        float innerATan;
-        if(preferSmallAng)
-        {
-            innerATan = (mag * mag - Mathf.Sqrt(innerSq)) / (g * x);
-        }
-        else
-        {
-            innerATan = (mag * mag + Mathf.Sqrt(innerSq)) / (g * x);            
-        }
-
-        float res = Mathf.Atan(innerATan) * Mathf.Rad2Deg;
-        return res;
-    }
-     */
 
     public void Calculate_Trajectory()
     {
@@ -120,72 +99,6 @@ public class Trajectory : MonoBehaviour
 
     void OnDrawGizmosSelected() 
     {
-        /*
-        if(magChange != launchMagnitude)
-        {
-            if(calc_SuitableMagAng)
-            {
-                //call function
-                float x = (target.position.x - transform.position.x);
-                float y = (target.position.y - transform.position.y);
-                float g = -acceleration.y;
-                float newAng = Angle_ToReachXY_InGravity_AtMagnitude(x, y, g, launchMagnitude);
-                if(float.IsNaN(newAng))
-                {
-                    launchMagnitude = magChange;
-                }
-                else
-                {
-                    magChange = launchMagnitude;
-                    launchAngle = newAng;
-                    velocity.x = Mathf.Cos(launchAngle * Mathf.Deg2Rad) * launchMagnitude;
-                    velocity.y = Mathf.Sin(launchAngle * Mathf.Deg2Rad) * launchMagnitude;
-                }
-            }
-            else
-            {
-                magChange = launchMagnitude;
-                velocity.x = Mathf.Cos(launchAngle * Mathf.Deg2Rad) * launchMagnitude;
-                velocity.y = Mathf.Sin(launchAngle * Mathf.Deg2Rad) * launchMagnitude;
-            }
-        }
-
-        if(angChange != launchAngle)
-        {
-            if(calc_SuitableMagAng)
-            {
-                //call function
-                float x = (target.position.x - transform.position.x);
-                float y = (target.position.y - transform.position.y);
-                float g = -acceleration.y;
-                float newMag = Magnitude_ToReachXY_InGravity_AtAngle(x, y, g, launchAngle);
-                if(float.IsNaN(newMag))
-                {
-                    launchAngle = angChange;
-                }
-                else
-                {
-                    angChange = launchAngle;
-                    launchMagnitude = newMag;
-                    velocity.x = Mathf.Cos(launchAngle * Mathf.Deg2Rad) * launchMagnitude;
-                    velocity.y = Mathf.Sin(launchAngle * Mathf.Deg2Rad) * launchMagnitude;
-                }
-            }
-            else
-            {
-                angChange = launchAngle;
-                velocity.x = Mathf.Cos(launchAngle * Mathf.Deg2Rad) * launchMagnitude;
-                velocity.y = Mathf.Sin(launchAngle * Mathf.Deg2Rad) * launchMagnitude;
-            }
-        }
-
-        if(velChange != velocity)
-        {
-            velChange = velocity;
-            launchMagnitude = velocity.magnitude;
-            launchAngle = Vector3.SignedAngle(Vector3.right, velocity, Vector3.forward);
-        }
-        */
         if(calc_Trajectory)
         {
             if(!auto_calc)
@@ -228,5 +141,103 @@ public class Trajectory : MonoBehaviour
         {
             OnDrawGizmosSelected();
         }    
+    }
+*/
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    [SerializeField] Vector3 pointA;
+    [SerializeField] Vector3 pointB;
+    [SerializeField] Vector3 velocity;
+    [SerializeField] static int splits = 20;
+    [SerializeField] Vector3 acceleration = new Vector3(0f, -9.81f, 0f);
+    [SerializeField] Vector3[] pathVertList = new Vector3[splits];
+    //[SerializeField] LineRenderer lineRenderer = null;
+    public LineRenderer lineRenderer;
+
+    public float time = 2;
+
+    public float Distance_AtVel_DueToAcc_InTime(float u, float a, float t)
+    {
+        return u * t + 0.5f * a * t * t;
+    }
+
+    public float Speed_ForDistance_DueToAcc_InTime(float d, float a, float t)
+    {
+        return (d - Distance_AtVel_DueToAcc_InTime(0, a, t)) / time;
+    }
+
+    public void Calculate_Velocity()
+    {
+        Vector3 d = pointB - pointA;
+        velocity.x = Speed_ForDistance_DueToAcc_InTime(d.x, acceleration.x, time);
+        velocity.y = Speed_ForDistance_DueToAcc_InTime(d.y, acceleration.y, time);
+        velocity.z = Speed_ForDistance_DueToAcc_InTime(d.z, acceleration.z, time);
+    }
+
+    public void Calculate_Trajectory()
+    {
+
+        float dt = 0;
+        Vector3 d;
+        for(int i = 0; i < splits ; i++)
+        {
+            dt = (time / (splits - 1)) * i;
+            
+            d.x = Distance_AtVel_DueToAcc_InTime(velocity.x, acceleration.x, dt);
+            d.y = Distance_AtVel_DueToAcc_InTime(velocity.y, acceleration.y, dt);
+            d.z = Distance_AtVel_DueToAcc_InTime(velocity.z, acceleration.z, dt);
+            //Debug.Log(i);
+            pathVertList[i] = d;
+        }
+
+       //pathVertList.Add(pointB);
+    }
+
+    void Start()
+    {
+        //lineRenderer = GetComponent<LineRenderer>();
+        //lineRenderer.SetWidth(.4f, .4f);
+    }
+
+    void Update()
+    {
+        GameObject source = GameObject.Find("Source");
+        pointA = source.transform.position;
+        pointB = gameObject.transform.position;
+
+        Calculate_Velocity();
+
+        Calculate_Trajectory();
+        
+        lineRenderer.positionCount = splits;
+        
+        lineRenderer.SetPositions(pathVertList);
+
+        bool obstructionFlag = false;
+
+        for(int i=1 ; i < splits - 2 ; i++)
+        {
+            Vector3 direction = pathVertList[i+1] - pathVertList[i];
+
+            RaycastHit hit;
+            if(Physics.Raycast(pathVertList[i], direction, out hit))
+            {
+                Debug.DrawRay(pathVertList[i], direction, Color.yellow);
+                if(hit.collider.gameObject.tag == "Terrain")
+                {
+                    obstructionFlag = true;
+                }
+            }
+
+            if(obstructionFlag)
+            {
+                lineRenderer.material.color = new Color(1,0,0,1);
+            }
+            else
+            {
+                lineRenderer.material.color = new Color(0,1,0,1);
+            }
+        }
     }
 }
