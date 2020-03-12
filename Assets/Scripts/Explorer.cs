@@ -64,12 +64,12 @@ public class Explorer : MonoBehaviour
             using (var file = System.IO.File.OpenRead(aFileName))
             using (var reader = new System.IO.BinaryReader(file))
             {
-                for (int y=0;y<yRes;y++)
+                for (int y=0 ; y < yRes ; y++)
                 {
-                    for(int x=0;x<xRes;x++)
+                    for(int x=0 ; x < xRes ; x++)
                     {
                         float v = (float)reader.ReadByte();
-                        heights[y,x] = v / 1024f;
+                        heights[yRes - y - 1, x] = v / 1024f;
                         //Debug.Log(v + ",");
                     }
                 }

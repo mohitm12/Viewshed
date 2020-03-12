@@ -31,11 +31,14 @@ ScriptsOnlyBuild:
     - Toggle
     - ToggleButtons
     - ToggleDestroyer
+    - ToggleProjectile
     - ToggleSettings
+    - Trajectory
     - WaterLevel
     - spawner
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
+    - UnityEditor.TestTools.TestRunner.TestListCacheData
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
@@ -71,19 +74,19 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
+      Script: {instanceID: 9702}
+    - Class: 114
       Script: {instanceID: 9704}
     - Class: 114
-      Script: {instanceID: 9706}
+      Script: {instanceID: 9790}
     - Class: 114
-      Script: {instanceID: 9792}
+      Script: {instanceID: 9866}
     - Class: 114
-      Script: {instanceID: 9868}
+      Script: {instanceID: 9906}
     - Class: 114
-      Script: {instanceID: 9908}
+      Script: {instanceID: 9956}
     - Class: 114
-      Script: {instanceID: 9958}
-    - Class: 114
-      Script: {instanceID: 10292}
+      Script: {instanceID: 10290}
     - Class: 114
       Script: {instanceID: 10632}
     - Class: 114
@@ -130,13 +133,13 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9706}
+      Script: {instanceID: 9704}
     - Class: 114
-      Script: {instanceID: 9868}
+      Script: {instanceID: 9866}
     - Class: 114
-      Script: {instanceID: 9908}
+      Script: {instanceID: 9906}
     - Class: 114
-      Script: {instanceID: 10292}
+      Script: {instanceID: 10290}
     - Class: 114
       Script: {instanceID: 10648}
     - Class: 114
@@ -191,35 +194,37 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9706}
+      Script: {instanceID: 9704}
     - Class: 114
-      Script: {instanceID: 9716}
+      Script: {instanceID: 9714}
     - Class: 114
-      Script: {instanceID: 9738}
+      Script: {instanceID: 9736}
     - Class: 114
-      Script: {instanceID: 9766}
+      Script: {instanceID: 9764}
     - Class: 114
-      Script: {instanceID: 9772}
+      Script: {instanceID: 9770}
     - Class: 114
-      Script: {instanceID: 9812}
+      Script: {instanceID: 9810}
     - Class: 114
-      Script: {instanceID: 9818}
+      Script: {instanceID: 9816}
+    - Class: 114
+      Script: {instanceID: 9866}
     - Class: 114
       Script: {instanceID: 9868}
     - Class: 114
-      Script: {instanceID: 9870}
+      Script: {instanceID: 9906}
     - Class: 114
-      Script: {instanceID: 9908}
+      Script: {instanceID: 9916}
     - Class: 114
-      Script: {instanceID: 9918}
+      Script: {instanceID: 10062}
     - Class: 114
-      Script: {instanceID: 10064}
+      Script: {instanceID: 10084}
     - Class: 114
-      Script: {instanceID: 10086}
+      Script: {instanceID: 10204}
     - Class: 114
-      Script: {instanceID: 10206}
+      Script: {instanceID: 10290}
     - Class: 114
-      Script: {instanceID: 10292}
+      Script: {instanceID: 10306}
     - Class: 114
       Script: {instanceID: 10318}
     - Class: 114
@@ -244,6 +249,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 10662}
     - Class: 114
       Script: {instanceID: 10696}
+    - Class: 114
+      Script: {instanceID: 10736}
     - Class: 114
       Script: {instanceID: 10844}
     - Class: 114
@@ -324,21 +331,21 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9706}
+      Script: {instanceID: 9704}
     - Class: 114
-      Script: {instanceID: 9812}
+      Script: {instanceID: 9810}
     - Class: 114
-      Script: {instanceID: 9818}
+      Script: {instanceID: 9816}
     - Class: 114
-      Script: {instanceID: 9868}
+      Script: {instanceID: 9866}
     - Class: 114
-      Script: {instanceID: 9908}
+      Script: {instanceID: 9906}
     - Class: 114
-      Script: {instanceID: 9918}
+      Script: {instanceID: 9916}
     - Class: 114
-      Script: {instanceID: 10184}
+      Script: {instanceID: 10182}
     - Class: 114
-      Script: {instanceID: 10292}
+      Script: {instanceID: 10290}
     - Class: 114
       Script: {instanceID: 10318}
     - Class: 114
@@ -644,6 +651,12 @@ ScriptsOnlyBuild:
     className: ControlPlayableAsset
   - hash:
       serializedVersion: 2
+      Hash: 0cd1e39dd89a037befcf480b3122d11a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ToggleProjectile
+  - hash:
+      serializedVersion: 2
       Hash: b8a5e8091ab0b8861d2add371082c5e0
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -788,7 +801,7 @@ ScriptsOnlyBuild:
     className: GetCoordinates
   - hash:
       serializedVersion: 2
-      Hash: 0787856f4e5fca390bdb1dcf2ce853f3
+      Hash: 37843d6e924a1d4ffb325173f4fac272
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Trajectory

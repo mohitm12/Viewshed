@@ -152,6 +152,8 @@ public class Trajectory : MonoBehaviour
     [SerializeField] static int splits = 20;
     [SerializeField] Vector3 acceleration = new Vector3(0f, -9.81f, 0f);
     [SerializeField] Vector3[] pathVertList = new Vector3[splits];
+    [SerializeField] float launchMagnitude = 1f;
+    [SerializeField] float launchAngle = 45f;
     //[SerializeField] LineRenderer lineRenderer = null;
     public LineRenderer lineRenderer;
 
@@ -205,8 +207,13 @@ public class Trajectory : MonoBehaviour
         GameObject source = GameObject.Find("Source");
         pointA = source.transform.position;
         pointB = gameObject.transform.position;
+    
 
         Calculate_Velocity();
+
+        launchAngle = Mathf.Asin(Vector3.Dot(velocity, new Vector3(0,1,0)) / (velocity.magnitude)) * Mathf.Rad2Deg;
+        //launchAngle = Vector3.SignedAngle(Vector3.right, velocity, Vector3.down);
+        launchMagnitude = velocity.magnitude;
 
         Calculate_Trajectory();
         

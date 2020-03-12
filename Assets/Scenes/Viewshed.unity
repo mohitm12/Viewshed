@@ -1160,6 +1160,8 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
+  launchMagnitude: 1
+  launchAngle: 45
   lineRenderer: {fileID: 865080450}
   time: 2
 --- !u!1 &170579396
@@ -3169,7 +3171,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 720297303}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1680229075}
+        m_MethodName: toggleButtons
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &720297303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6913,7 +6926,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 960727850}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.99999976
+  m_Size: 0.99999964
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -7681,6 +7694,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1680229077}
+  - component: {fileID: 1680229075}
   m_Layer: 0
   m_Name: Trajectory
   m_TagString: Untagged
@@ -7688,6 +7702,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1680229075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1680229074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d506415c98d68a49818500e069f26bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trajectoty: {fileID: 1680229074}
+  button: {fileID: 720297302}
 --- !u!4 &1680229077
 Transform:
   m_ObjectHideFlags: 0
@@ -8047,7 +8075,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 181208521}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.11140844
+  m_Size: 0.11140843
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
