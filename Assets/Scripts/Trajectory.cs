@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Trajectory : MonoBehaviour
 {
@@ -153,7 +154,7 @@ public class Trajectory : MonoBehaviour
     [SerializeField] Vector3 acceleration = new Vector3(0f, -9.81f, 0f);
     [SerializeField] Vector3[] pathVertList = new Vector3[splits];
     [SerializeField] float launchMagnitude = 1f;
-    [SerializeField] float launchAngle = 45f;
+    [SerializeField] float launchAngle = 5f;
     //[SerializeField] LineRenderer lineRenderer = null;
     public LineRenderer lineRenderer;
 
@@ -196,10 +197,42 @@ public class Trajectory : MonoBehaviour
        //pathVertList.Add(pointB);
     }
 
+
+
+    public GameObject trajectoty;
+    public Button button;
+	private bool show;
+    public Text atext;
+    public Text ttext;
+    public Slider slider;
+    
     void Start()
     {
-        //lineRenderer = GetComponent<LineRenderer>();
-        //lineRenderer.SetWidth(.4f, .4f);
+        show = false;
+        button.GetComponent<Image>().color = new Color(0.7624f, 0.08556f, 0.0958f, 1.0f);
+		trajectoty.SetActive(false);
+        time = slider.value;
+        atext.text = launchAngle.ToString() + " Degrees";
+        ttext.text = time.ToString() + " Seconds";
+    }
+	public void toggleButtons()
+    {
+
+        if(show)
+        {
+            trajectoty.SetActive(false);
+			button.GetComponent<Image>().color = new Color(0.7624f, 0.08556f, 0.0958f, 1.0f);
+            button.GetComponentInChildren<Text>().color = Color.white;
+            show = false;
+        }
+        else
+        {
+            trajectoty.SetActive(true);
+            button.GetComponent<Image>().color = new Color(0.0151f,0.5f,0f,1.0f);
+            show = true;
+        }   
+
+
     }
 
     void Update()
@@ -246,5 +279,16 @@ public class Trajectory : MonoBehaviour
                 lineRenderer.material.color = new Color(0,1,0,1);
             }
         }
+        atext.text = launchAngle.ToString() + " Degrees";
+        ttext.text = time.ToString() + " Seconds";
+        slider.value = time ; 
+
+    }
+
+    public void onSlide()
+    {
+        time = slider.value;
+        ttext.text = time.ToString() + " Seconds";
+        atext.text = launchAngle.ToString() + " Degrees";
     }
 }
