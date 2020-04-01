@@ -39,7 +39,7 @@ public class GetCoordinates : MonoBehaviour
             x = upperLeft[0] + (point.x / 1024) * (upperRight[0] - upperLeft[0]);
             y = lowerLeft[1] + (point.z / 1024) * (upperLeft[1] - lowerLeft[1]); 
 
-            ctext.text +="Tower " + i + " : [ "+ x.ToString() + " , " + y.ToString() + " ]";
+            ctext.text +="Tower " + i + " : [ "+ x.ToString() + " ,\n            " + y.ToString() + " ]";
             ctext.text += "\n\n";
         }     
             

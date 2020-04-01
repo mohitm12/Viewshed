@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class MouseCoordinates : MonoBehaviour
 {
     public Text etext;
+    public Text htext;
+    public Terrain terrain;
     private RaycastHit hitInfo;
     private Ray ray;
 
@@ -14,7 +16,9 @@ public class MouseCoordinates : MonoBehaviour
     List<double> lowerRight = null;
     List<double> upperRight = null; 
 
-    double x,y;
+    double min, max;
+
+    double x,y,z;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +32,8 @@ public class MouseCoordinates : MonoBehaviour
         lowerLeft = Info.lowerLeft;
         lowerRight = Info.lowerRight;
         upperRight = Info.upperRight;
+        min = Info.min;
+        max = Info.max;
 
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if(Physics.Raycast(ray, out hitInfo, Mathf.Infinity, (1<<LayerMask.NameToLayer("Ground"))))
@@ -37,7 +43,10 @@ public class MouseCoordinates : MonoBehaviour
 
             x = upperLeft[0] + (point.x / 1024) * (upperRight[0] - upperLeft[0]);
             y = lowerLeft[1] + (point.z / 1024) * (upperLeft[1] - lowerLeft[1]);
-            etext.text = x.ToString() + ",\n " + y.ToString();
+            etext.text = x.ToString() + ", " + y.ToString();
+
+            z = min + (point.y * max) / terrain.terrainData.size.y;
+            htext.text = "Height : " + z.ToString() + " m";
         }
     }
 }
