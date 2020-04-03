@@ -18,7 +18,8 @@ public class MouseCoordinates : MonoBehaviour
 
     double min, max;
 
-    double x,y,z;
+    double x,y;
+    int z;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,7 +46,7 @@ public class MouseCoordinates : MonoBehaviour
             y = lowerLeft[1] + (point.z / 1024) * (upperLeft[1] - lowerLeft[1]);
             etext.text = x.ToString() + ", " + y.ToString();
 
-            z = min + (point.y / terrain.terrainData.size.y) * (max - min) * 4;
+            z = (int)(min + (point.y / terrain.terrainData.size.y) * (max - min) * 4);
             htext.text = "Height : " + z.ToString() + " m";
         }
     }

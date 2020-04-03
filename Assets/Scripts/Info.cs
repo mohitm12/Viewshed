@@ -54,7 +54,7 @@ public class Info : MonoBehaviour
         readText = true;
     }
 
-    void ShowInfo(string fileName)
+    public static void ShowInfo(string fileName)
     {
         String json = File.ReadAllText(fileName);
         RootObject rootObject = JsonUtility.FromJson<RootObject>(json);

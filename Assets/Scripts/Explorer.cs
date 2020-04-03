@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 using SmartDLL;
@@ -20,7 +22,7 @@ public class Explorer : MonoBehaviour
         openExplorerButton.onClick.AddListener(delegate{ShowExplorer();});
 
     }
-
+    /*
     void Start()
     {
 
@@ -48,6 +50,15 @@ public class Explorer : MonoBehaviour
 
         fileExplorer.OpenExplorer(initialDir,restoreDir,title,defExt,filter);
         readText = true;    
+    }
+    */
+
+    void ShowExplorer()
+    {
+        var process = Process.Start(Environment.CurrentDirectory + @"\Tiff2Raw.exe");
+        process.WaitForExit();
+        LoadTerrain(Environment.CurrentDirectory + @"\tempFiles\rawFile.raw");
+        Info.ShowInfo(Environment.CurrentDirectory + @"\tempFiles\jsonFile.json");
     }
 
     void LoadTerrain(string aFileName)

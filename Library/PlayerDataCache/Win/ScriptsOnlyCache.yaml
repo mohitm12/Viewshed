@@ -693,7 +693,7 @@ ScriptsOnlyBuild:
     className: projLOS
   - hash:
       serializedVersion: 2
-      Hash: 4ae56d4626796be79268dae26cbe9cab
+      Hash: ed228839d284179feeab1fd6c22502c3
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MouseCoordinates
@@ -1063,4 +1063,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Viewshed.unity
   - Assets/Scenes/Watershed.unity
   - Assets/Scenes/Tutorials.unity
-  playerPath: F:/BISAG/Unity/Project Build/V&W.exe
+  playerPath: C:/Users/Mohit/Desktop/Viewshed(Build)/V&W.exe
