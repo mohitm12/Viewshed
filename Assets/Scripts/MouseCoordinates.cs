@@ -44,7 +44,7 @@ public class MouseCoordinates : MonoBehaviour
 
             x = upperLeft[0] + (point.x / 1024) * (upperRight[0] - upperLeft[0]);
             y = lowerLeft[1] + (point.z / 1024) * (upperLeft[1] - lowerLeft[1]);
-            etext.text = x.ToString() + ", " + y.ToString();
+            etext.text = "Coordinates : " + x.ToString() + " , " + y.ToString();
 
             z = (int)(min + (point.y / terrain.terrainData.size.y) * (max - min) * 4);
             htext.text = "Height : " + z.ToString() + " m";
