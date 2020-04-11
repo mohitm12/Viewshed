@@ -5,7 +5,7 @@ using System;
 using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
-using SmartDLL;
+
 
 public class Explorer : MonoBehaviour
 {
@@ -13,45 +13,18 @@ public class Explorer : MonoBehaviour
     public Button openExplorerButton;
     public Terrain TerrainMain;
 
-    public SmartFileExplorer fileExplorer = new SmartFileExplorer();
-
     private bool readText = false;
+
+    void Start()
+    {
+        ShowExplorer();
+    }
 
     void OnEnable()
     {
         openExplorerButton.onClick.AddListener(delegate{ShowExplorer();});
 
     }
-    /*
-    void Start()
-    {
-
-    }
-
-    void Update()
-    {
-        if(fileExplorer.resultOK && readText)
-        {
-            LoadTerrain(fileExplorer.fileName);
-            Debug.Log("update");
-            readText = false;
-        }
-    }
-
-    void ShowExplorer()
-    {
-        string initialDir = @"C:\";
-        bool restoreDir = true;
-        string title = "Open a file";
-        string defExt = "raw";
-        string filter = "Raw file |*.raw";
-
-        Debug.Log("ShowExplorer()");
-
-        fileExplorer.OpenExplorer(initialDir,restoreDir,title,defExt,filter);
-        readText = true;    
-    }
-    */
 
     void ShowExplorer()
     {
