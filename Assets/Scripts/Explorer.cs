@@ -12,7 +12,16 @@ public class Explorer : MonoBehaviour
     
     public Button openExplorerButton;
     public Terrain TerrainMain;
-
+  //  public Terrain terrain;
+     
+     public int numberOfBands = 5;
+     
+     public Color bandColor = Color.white;
+     public Color bkgColor = Color.clear;
+     
+     public Renderer outputPlain;
+     
+     public Texture2D topoMap;
     private bool readText = false;
 
     void Start()
@@ -59,6 +68,27 @@ public class Explorer : MonoBehaviour
                 }
             }
             TerrainMain.terrainData.SetHeights(0,0,heights);
-
+        GenerateTopoLines();
+        
     }
+     
+    //  void Update() 
+    //  {
+    //      if ( Input.GetMouseButtonDown(0) )
+    //      {
+    //          GenerateTopoLines();
+    //      }
+    //  }
+     
+     void GenerateTopoLines() 
+     {
+         //topoMap = ContourMap.FromTerrain( terrain );
+         //topoMap = ContourMap.FromTerrain( terrain, numberOfBands );
+         topoMap = ContourMap.FromTerrain( TerrainMain, numberOfBands, bandColor, bkgColor );
+         
+         if ( outputPlain )
+         {
+             outputPlain.material.mainTexture = topoMap;
+         }
+     }
 }
