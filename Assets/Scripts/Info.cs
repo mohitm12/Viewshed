@@ -16,14 +16,10 @@ public class Info : MonoBehaviour
     public static List<double> lowerRight;
     public static List<double> upperRight;
 
-    public Button openExplorerButton;
-    public SmartFileExplorer fileExplorer = new SmartFileExplorer();
+    
     private bool readText = false;
 
-    void OnEnable() 
-    {
-        openExplorerButton.onClick.AddListener(delegate{ShowExplorer();});    
-    }
+   
     
     void Start()
     {
@@ -33,25 +29,7 @@ public class Info : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(fileExplorer.resultOK && readText)
-        {
-            ShowInfo(fileExplorer.fileName);
-            readText = false;
-        }
-    }
-
-    void ShowExplorer()
-    {
-        string initialDir = @"C:\";
-        bool restoreDir = true;
-        string title = "Open a file";
-        string defExt = "json";
-        string filter = "Json file |*.json";
-
-        //Debug.Log("ShowExplorer()");
-
-        fileExplorer.OpenExplorer(initialDir,restoreDir,title,defExt,filter);
-        readText = true;
+        
     }
 
     public static void ShowInfo(string fileName)
